@@ -1,0 +1,16 @@
+# nvm的使用 
+
+1 nvm 安装 
+
+2 nvm -v 查看版本
+
+3  nvm install <node 版本>  ex： nvm install  8.15.0
+
+4 nvm  use <node 版本> ex ： nvm use 8.15.0
+
+
+
+本机已有node版本 ：
+
+10.14.2  8.15.0
+

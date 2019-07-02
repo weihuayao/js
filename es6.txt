@@ -1,0 +1,77 @@
+**6 babel转码器**
+
+babel 可将es6 转化为 es5从而兼容 。
+
+### 配置文件.babelrc 
+
+Babel 的配置文件是`.babelrc`，存放在项目的根目录下。使用 Babel 的第一步，就是配置这个文件。
+
+```javascript
+{
+   //presets字段设定转码规则，官方提供以下的规则集，根据需要安装。
+    // npm install --save-dev babel-preset-latest
+  "presets": ["latest",...],
+  "plugins": []
+}
+
+```
+
+### babel-node
+
+```bash
+1 babel-node es6.js //ke可以直接运行ES6
+npm install --save-dev babel-cli //也可以安装在项目中
+2改写 package.json
+{
+  "scripts": {
+    "script-name": "babel-node script.js"
+  }
+}
+```
+
+ **babel-register**
+
+```bash
+$ npm install --save-dev babel-register
+```
+
+使用时，必须首先加载`babel-register`。
+
+```bash
+require("babel-register"); //转码
+require("./index.js");
+```
+
+### babel-core
+
+如果某些代码需要调用 Babel 的 API 进行转码，就要使用`babel-core`模块。
+
+安装命令如下。
+
+```bash
+$ npm install babel-core --save
+```
+
+然后，在项目中就可以调用`babel-core`。
+
+```javascript
+var babel = require('babel-core');
+
+// 字符串转码
+babel.transform('code();', options);
+// => { code, map, ast }
+
+// 文件转码（异步）
+babel.transformFile('filename.js', options, function(err, result) {
+  result; // => { code, map, ast }
+});
+
+// 文件转码（同步）
+babel.transformFileSync('filename.js', options);
+// => { code, map, ast }
+
+// Babel AST转码
+babel.transformFromAst(ast, code, options);
+// => { code, map, ast }
+```
+

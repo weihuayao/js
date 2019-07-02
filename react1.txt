@@ -1,0 +1,58 @@
+## ReactJS
+
+```javascript
+import React from 'react';
+import { render } from 'react-dom'; //导入包
+
+
+class Hello extends React.Component{
+  render(){ 
+    var arr  = ['aa','bb','cc']
+    return( //return 中只能返回一个容器。
+      <div>
+        //绑定事件 
+        <p onClick={this.clickhandler.bind(this)}>Hello world</p> 
+         <a>nihao</a>
+         <ul>
+           { arr.map(function(item,index){ 
+               //遍历数组 ，使用 key= index 效率较高
+             return<li key={index}>{item}</li>
+           })
+           }
+         </ul>
+       </div>
+    )
+  }
+  clickhandler(){//自定义事件 
+    console.log(Date.now());
+  }
+
+}
+
+render(
+  <Hello/>,
+  document.getElementById('root')
+)
+
+export default Hello;
+```
+
+ **prop &state**
+
+**智能组件&木偶组件**
+
+智能组件也称为页面。负责数据，定义好函数的相关操作 。container
+
+木偶组件将数据展示给用户，函数开放给用户，components
+
+**React生命周期**
+
+1 render   返回组件要求渲染的模板
+
+2 componentDidmount 第一次加载渲染完成事件，一般再次获取网络数据
+
+3s houldconponentUpdate 用于优化。
+
+4 conponentDidupdate组件更新之后触发 用于清空并更新数据
+
+5 conponentWillUnmount 组件销毁之前触发的事件 ，一般用于用户存储特殊信息 清楚setTimeOut事件

@@ -1,0 +1,30 @@
+**let** 
+
+```javascript
+{
+  let a = 10;//块内
+  var b = 1; //全局
+}
+
+```
+
+### 暂时性死区 tdz 
+
+```javascript
+if (true) {
+  // TDZ开始
+  tmp = 'abc'; // ReferenceError
+  console.log(tmp); // ReferenceError
+
+  let tmp; // TDZ结束
+  console.log(tmp); // undefined
+
+  tmp = 123;
+  console.log(tmp); // 123
+}
+//使用`let`声明变量时，只要变量在还没有声明完成前使用，就会报错
+//let不允许在相同作用域内，重复声明同一个变量。
+```
+
+const 声明后不允许改变。
+

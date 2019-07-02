@@ -1,0 +1,185 @@
+# **node.JS**
+
+**node仅仅是工具箱中的一个小工具。**
+
+特点： 
+
+**单线程**   仅仅使用一个线程 
+
+**非阻塞io**  执行访问数据库时，转而执行其后面的代码。线程的cpu核心利用率是100%。
+
+**事件驱动**  新用户 老用户的i/o完成都以事件的方式加入事件。   
+
+**node.js 应用**   
+
+   node.js   善于i/o 不善于计算，擅长任务的调度。适合于websocket 配合 开发链接的实时应用   helloworld.js
+
+```javascript
+var http = require("http");
+
+var server  =  http.createServer(function(req,res){
+
+    res.writeHead(200,{"Content-type":"text/html;charset=UTF-8"});
+    res.end("hello world"+(1+2+4));
+});
+   server.listen(1079,"127.0.0.1");
+```
+
+node helloworld.js  编译并且执行 
+
+node.js  没有web容器
+
+**HTTP** 
+
+
+
+```javascript
+var http = require("http"); //引用http 模块
+//创建一个 服务器 回调函数表示接受请求之后做的事情
+var server  =  http.createServer(function(req,res){
+	//设置请求头
+    res.writeHead(200,{"Content-type":"text/html;charset=UTF-8"});
+    //请求结束
+    res.end("hello world"+(1+2+4));
+});
+   server.listen(1079,"127.0.0.1");//设置监听端口 和 ip地址u'r'l
+```
+
+**url**
+
+
+
+```javascript
+var http = require("http");
+var url  = require("url");
+
+var server = http.createServer(function(req ,res){
+    
+    //解决乱码的问题
+    res.writeHead(200, {'Content-Type': 'text/html; charset=utf-8'});
+
+    //url.parse()可以将一个完整的URL地址，分为很多部分：
+	//host、port、pathname、path、query
+    var pathname =url.parse(req.url).pathname;
+    //url.parse()如果第二个参数是true，那么就可以将所有的查询变为对象
+	//就可以直接打点得到这个参数
+    var query = url.parse(req.url,true).query;
+    //{ id: '1', age: '12' }
+    //直接打点得到这个参数
+    var age =  query.age;
+
+    console.log("pathname:"+pathname);
+    console.log(query); 
+    console.log("age:"+ age );   
+    res.end;
+}) ;
+server.listen(1079,"127.0.0.1");
+```
+
+**fs**
+
+```javascript
+var http = require("http");
+var fs = require("fs");
+var server  =  http.createServer(function(req,res){
+    res.writeHead(200,{"Content-type":"text/html;charset=UTF-8"});
+    fs.readFile('hello.txt', function(err, data){//读取文件 
+        if (err) {
+            throw err
+        };
+        res.end(data);
+      });
+});
+   server.listen(1079,"127.0.0.1");
+```
+
+```javascript
+var http = require("http");
+var fs = require("fs");
+
+var server  =  http.createServer(function(req,res){
+    res.writeHead(200,{"Content-type":"text/html;charset=UTF-8"});
+    if(req.url == "/favicon.ico"){
+        return;
+    }
+   // fs.mkdir("test/album")//创建文件夹
+    // fs.stat("./test" ,function(err,data) {//检测是否为文件夹 
+    //     console.log(data.isDirectory()); 
+    // });
+    fs.readdir("./test/",function(err,files){
+        var dir = [];
+
+        (function iterator(i){
+			//遍历结束
+			if(i == files.length){
+				console.log(dir);
+				return;
+			}
+			fs.stat("./test/" + files[i],function(err,stats){
+				//检测成功之后做的事情
+				if(stats.isDirectory()){
+					//如果是文件夹，那么放入数组。不是，什么也不做。
+					dir.push(files[i]);
+				}
+				iterator(i+1);
+			});
+		})(0);
+    })
+    res.end();
+});
+   server.listen(1079,"127.0.0.1");
+```
+
+**path**
+
+```javascript
+var http = require("http");
+var url = require("url");
+var fs = require("fs");
+var path = require("path");
+
+http.createServer(function(req,res){
+	//得到用户的路径
+	var pathname = url.parse(req.url).pathname;
+	//默认首页
+	if(pathname == "/"){
+		pathname = "hello.html";
+	}
+	//拓展名
+	var extname = path.extname(pathname);
+
+	//真的读取这个文件
+	fs.readFile("./static/" + pathname,function(err,data){
+		if(err){
+			//如果此文件不存在，就应该用404返回
+			fs.readFile("./static/404.html",function(err,data){
+				res.writeHead(404,{"Content-type":"text/html;charset=UTF8"});
+				res.end(data);
+			});
+			return;
+		};
+		//MIME类型，就是
+		//网页文：  text/html
+		//jpg文件 :   image/jpg件
+		var mime = getMime(extname);
+		res.writeHead(200,{"Content-type":mime});
+		res.end(data);
+	});
+
+}).listen(3000,"127.0.0.1");
+
+function getMime(extname){
+	switch(extname){
+		case ".html" :
+			return "text/html";
+			break;
+		case ".jpg" : 
+			return "image/jpg";
+			break;
+		case ".css":
+			return "text/css";
+			break;
+	}
+}
+```
+

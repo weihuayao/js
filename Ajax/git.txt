@@ -1,0 +1,56 @@
+## **GIT 基本使用**
+
+ git init  初始化一个git仓库。
+
+git add . or  git add filename 将修改后文件存入暂存区。 git add -A 添加所有修改后的文件加入暂存区
+
+git  commit  -m  '备注'  该命令用于产生一次新的提交
+
+git remove -v 查看已有的远程仓库
+
+git remote add  <远程仓库名> <远程仓库地址>
+
+git branch 查看 当前仓库分支
+
+git branch branchname  新建一个分支 
+
+git branch -d <分支名称> 删除指定分支 
+
+git checkout 切换分支 
+
+git checkout  -b <分支名称>   创建并且切换到该分支 
+
+git pull <远程仓库名>  分支名称
+
+git push<远程仓库名>  分支名称‘
+
+git merge <分支名称> 合并分支
+
+git clone<远程仓库地址>
+
+**上传的GitHub上的操作** 
+
+1 cd 文件夹   
+
+ 2  git init  初始化仓库  
+
+ 3   git add . 
+
+ 4  git  commit  - m " 备注 "  
+
+5  git remote add origin  url     添加 远程仓库地址 
+
+6  git pull  -- rebase origin  master  合并代码 
+
+7 git push -u git  origin  master 
+
+**git 冲突** 
+
+1 合并代码时发生冲突
+
+两个人同时修个一个 文件 合并时发生冲突 。删除重复部分
+
+2更新代码时发生冲突
+
+ 
+
