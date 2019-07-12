@@ -1,0 +1,234 @@
+@charset "utf-8";
+header,footer{
+    position: fixed;
+    left: 0;
+    width: 100%;
+    z-index: 2;
+}
+header{
+    top: 0;
+    width: 100%;
+    height: 170px;
+    background-color: #3a3a3a;
+    
+    ul{
+        color: #fff;
+        height: 47px;
+        display: -webkit-box;
+        font-weight: 900;
+        
+        li{
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            -ms-box-flex: 1;
+            box-flex: 1;
+            height: 47px;
+            
+            //垂直居中
+            display: -webkit-box;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            -ms-box-align: center;
+            box-align: center;
+            
+            &:nth-child(2){
+//              -webkit-box-flex: 14;
+//              -moz-box-flex: 14;
+//              -ms-box-flex: 14;
+//              box-flex: 14;
+                width:57%;
+                
+                i{
+                    font-size: 16px;
+                    line-height: 18px;
+                    margin-left: 10px;
+                    font-style: normal;
+                }
+                
+            }
+        }
+    }
+    
+    .itemList{
+        display: -webkit-box;
+        color: #fff;
+        height: 120px;
+        
+        .item{
+            height: 115px;
+            //平均分
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            -ms-box-flex: 1;
+            box-flex: 1;
+            //水平居中
+            display: -webkit-box;
+            -webkit-box-pack: center;
+            -moz-box-pack: center;
+            -ms-box-pack: center;
+            box-pack: center;
+            //垂直居中
+            -webkit-box-orient: vertical;
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            -ms-box-align: center;
+            box-align: center;
+            
+            p{
+                &:nth-child(1){
+                    font-size: 40px;
+                }
+                &:nth-child(2){
+                    font-size: 14px;
+                    margin-top: 10px;
+                }
+            }
+        }
+    }
+}
+
+section{
+    width: 100%;
+    background-color: #fff;
+    overflow: hidden;
+    .itemList{
+        overflow: hidden;
+        .item{
+            float: left;
+            width: 25%;
+            min-height: 86px;
+            //使边框不影响盒子的宽度
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            text-align: center;
+            padding: 20px 0;
+            border-top: 1px solid #dddddd;
+            border-right: 1px solid #dddddd;
+            //第二种方法
+            font-size: 12px;
+            font-weight: 900;
+            &:last-child{
+                border-right: 0;
+            }
+            p{
+                &:nth-child(1){
+                    font-size: 24px;
+                    margin-bottom: 4px;
+                    //第二种方法
+                    font-weight: 100;
+                    
+                }
+                //第一种方法
+//              &:nth-child(2){
+//                  font-size: 12px;
+//                  font-weight: 900;
+//              }
+            }
+
+        }
+        &:last-child{
+            border-bottom: 1px solid #eee;
+        }
+    }
+    
+}
+.banner{
+    height: 88px;
+    border-top: 1px solid #dadada;
+    border-bottom: 1px solid #dadada;
+    position: relative;
+    z-index: 1;
+    .banner_box{
+        a{
+            display: block;
+            img{
+                width: 100%;
+                height: 88px;
+            }
+        }
+    }
+    .controls{
+        position: absolute;
+        bottom: 0;
+        left: 47%;
+        ul{
+            li{
+                float: left;
+                width: 6px;
+                height: 6px;
+                border-radius: 100px;
+                background-color: #e4e4e4;
+                margin: 4px 2px;
+                
+                &.active{
+                   background-color:#08a5f2; 
+                }
+            }
+        }
+    }
+}
+footer{
+    bottom: 0;
+    width: 100%;
+    height: 54px;
+    background-color: #fafbfd;
+    border:1px solid #dadada; 
+    
+    //  弹性盒的步骤：
+    //*给父元素直接添加Display：box;//如果有一个字体数不一样就会被撑开
+    //*给子元素直接添加Box-flex：1；//给子元素设置每一个所占的比例 //使用弹性盒就不要使用浮动
+    ul{
+        display: -webkit-box;
+        color: #999;
+//      height: 50px;
+        //字数不一致不能平均分布
+        li{
+            height: 54px;
+            //第一种方法
+//          float: left;
+//          width:25%;
+//          text-align: center;
+//          p{
+//              &:nth-child(1){
+//                  margin: 5px 0;
+//              }
+//          }
+            
+            //第二种弹性盒
+            -webkit-box-flex: 1;
+            -moz-box-flex: 1;
+            -ms-box-flex: 1;
+            box-flex: 1;
+            
+            //水平居中
+            display: -webkit-box;
+            -webkit-box-pack: center;
+            -moz-box-pack: center;
+            -ms-box-pack: center;
+            box-pack: center;
+            //box-orient: vertical整体垂直居中。有水平居中后，与垂直居中必须一起使用才能使垂直居中起作用
+            -webkit-box-orient: vertical;
+            //垂直居中(必须有高度)
+            -webkit-box-align: center;
+            -moz-box-align: center;
+            -ms-box-align: center;
+            box-align: center;
+            
+            p{
+                //直接的p标签的层级关系没有图标的所带的class选择器的权重大              
+                &:nth-child(1){
+                    font-size: 28px;
+                }
+                &:nth-child(2){
+                    font-size: 10px;
+                    line-height: 16px;
+                }
+            }
+            
+            &.active{
+                color: #00abf5;
+            }
+        }
+    }
+}

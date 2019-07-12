@@ -1,0 +1,101 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>CSS3绘制旋转的太极图案</title>
+<style>
+body {
+    background-color:gray;
+}
+/* 先画一个黑圆 半径200px */
+.taiji{   
+    width: 400px;
+    height: 400px;
+    position: relative;
+    margin: 50px auto;
+    border-radius: 400px;
+    background-color: black;
+    animation:rotation 2.5s linear infinite;
+}
+/* 将圆分成两份 */
+.taiji:before ,.taiji:after{
+    width: 200px;
+    height: 400px;
+    position: absolute;
+    top:0;
+    display: block;
+    content:"";
+}
+.taiji:before{
+    left: 0;
+    border-radius: 200px 0 0 200px;
+    background: black
+}
+.taiji:after
+{
+    right: 0;
+    border-radius: 0 200px 200px 0;
+    background: white;
+}
+/* 以半径为 画一个黑圆一个百元 */
+.circle1,
+.circle2 {
+    width:200px;
+    height:200px;
+    position:absolute;
+    z-index:2;
+    border-radius:300px;
+}
+.circle1 {
+    top:0;
+    left:100px;
+    background-color:#000
+}
+.circle2{
+    bottom:0;
+    right:100px;
+    background-color:#fff;
+}
+.circle1:after,
+.circle2:after {
+    width:75px;
+    height:75px;
+    position:
+    absolute;
+    z-index:3;
+    display:block;
+    content:"";
+    border-radius:75px;
+}
+.circle1:after {
+    top:60px;
+    left:55px;
+    background-color:#fff;
+}
+.circle2:after {
+    bottom:60px;
+    right:55px;
+    background-color:#000;
+}
+@keyframes rotation {
+    0% {transform:rotate(0deg);}
+    100% {transform:rotate(360deg);}
+}
+@-webkit-keyframes rotation {
+    0% {-webkit-transform:rotate(0deg);}
+    100% {-webkit-transform:rotate(360deg);}
+}
+@-moz-keyframes rotation {
+    0% {-moz-transform:rotate(0deg);}
+    100% {-moz-transform:rotate(360deg);}
+}
+</style>
+</head>
+
+<body>
+<div class="taiji">
+ <div class="circle1"></div>
+ <div class="circle2"></div>
+</div>
+</body>
+</html>

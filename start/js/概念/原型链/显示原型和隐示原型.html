@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title> </title>
+</head>
+<body>
+<script type="text/javascript">
+    function  Fun() {//显示
+    }
+    console.log(Fun.prototype);
+    var fun =new Fun()  //隐式
+    console.log(fun.__proto__)
+
+    console.log(Fun.prototype ===fun.__proto__)
+    Fun.prototype.test = function () {  //添加方法
+        console.log("test()")
+    }
+
+    fun.test()
+</script>
+</body>
+</html>

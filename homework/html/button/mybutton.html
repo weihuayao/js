@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<html class="no-js">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="">
+    <style type="text/css">
+        .button {
+            background: #3498db;
+            width: 180px;
+            height:30px;
+            padding: 4px 0;
+            position: absolute;
+            border-radius: 3px;
+            text-align:center;
+        }
+
+        .button2 {
+            background: #3498db;
+            width: 180px;
+            height:30px;
+            padding: 4px 0;
+            position: absolute;
+            border-radius: 3px;
+            text-align:center;
+            margin-left: 200px;
+        }
+
+        
+    </style>
+</head>
+
+<body>
+    <div id="btn"></div>
+    <div id="btn2"></div>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./myButton.js"></script>
+    <script type="text/javascript">
+        var btn_button = new button("btn"); //new 一个按钮的对象
+        btn_button.value = "我是第一个按钮";   
+        btn_button.click = function () { 
+            alert("我是弹窗");
+        }
+        btn_button.init(); //然后初始化按钮
+        
+        var btn_button2 = new button2("btn2");
+        btn_button2.value = "2"
+        btn_button2.click = function(){
+            // $("#button_btn").trigger("click"); //触发a=btn1的弹窗
+            // document.getElementById("#button_btn").click =null
+            $("#button_btn").unbind("click");
+        }
+        btn_button2.init();
+
+
+        //btn_button2.init(); //然后初始化按钮
+    </script>
+</body>
+
+</html>

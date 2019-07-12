@@ -1,0 +1,147 @@
+header,
+footer {
+  position: fixed;
+  left: 0;
+  width: 100%;
+  z-index: 2;
+}
+header {  
+  width: 100%;
+  height: 50px;
+  background-color:white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #EEEEEE;
+}
+header ul{  
+  width: 100%;
+  color: grey;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color:white;
+
+}
+header ul li{
+  margin-left: 5%;
+  box-flex: 1;
+  height:50%;
+  width: 5%;
+  display: flex;
+  border: 2px solid EEEEEE;
+}
+header ul li img{
+  height:100%;
+  width: -1%;
+  display: flex;
+}
+header ul  input{
+  width: 75%;
+  height: 20px;
+  background: url("../images/fdj.jpg") no-repeat;
+}
+
+.con1{
+  display: flex;
+  width: 100%;
+  height: 120px;
+  background-color: yellow;
+  overflow: hidden;
+}
+.con1_left{
+  display: flex;
+  width: 20%;
+  background-color: white;
+  float: left;
+}
+.con1_left img{
+  height: 70px;
+  margin-top:50px;
+}
+.con1_right{
+  width: 80%;
+  background-color: white;
+}
+.con1_right li{
+  height: 70px;
+  margin-top:50px;
+}
+.con1_right li p:nth-child(1){
+  margin-top:60px; 
+  font-size: 18px;
+}
+.con1_right li p:nth-last-child(1){
+  margin-top:-10px;
+  font-size: 6px;
+}
+
+
+.con2{  display: flex;
+  width: 100%;
+  height: 70px;
+  background-color:white;
+  overflow: hidden;
+  border: 1px solid #EEEEEE;
+}
+  .con2_left{
+    display: flex;
+    width: 20%;
+    background-color:white;
+ 
+  }
+  .con2_left img{
+    height: 70px;
+  }
+  .con2_right{
+    width: 80%;
+    background-color: white;
+  }
+  .con2_right li{
+    height: 70px;
+  }
+  .con2_right li p:nth-child(1){
+    margin-top:10px; 
+    font-size: 18px;
+  }
+  .con2_right li p:nth-last-child(1){
+    margin-top:-10px;
+    font-size: 6px;
+  }
+
+footer {
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  display: flex;
+  background-color:white;
+  border: 2px solid #EEEEEE;
+}
+footer ul {
+  border-color: grey;
+  color: #999;
+  display: flex
+}
+footer ul li {
+  height: 60px;
+}
+footer ul li{
+  height:100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  justify-content: center;
+  align-items: center;
+}
+footer ul li p img{
+  height:100%;
+  width: 70%;
+  display: flex;
+  margin: 0 auto;
+}
+footer ul li p{
+  height:60%;
+  color: black;
+  text-align:center;
+}

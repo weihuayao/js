@@ -1,0 +1,122 @@
+.box{
+     
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    background: #fff;
+    display: flex;  
+    box-shadow: 0 0 10px #000 inset;
+    
+}
+.box1{
+    justify-content: center;
+    align-items: center;
+}
+.box2{
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.box3{
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.item{
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    border-radius: 15px;
+    background: #000;
+    order: auto;
+}
+.box3 .item:nth-child(2){
+    align-self: center;
+}
+.box3 .item:nth-child(3){
+    align-self: flex-end;
+}
+.box4,.box5,.box6{
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content:space-between ;
+}
+.column{
+    display: flex;
+    flex-basis: 100%;
+    justify-content: space-between;
+}
+.box5 .column:nth-child(2){
+    justify-content: center;
+}
+.box6 .column{
+    justify-content: space-around;
+}
+
+.mf-box{
+    box-sizing: border-box;
+    width: 100px;
+    height: 100px;
+    margin-top: 100px;
+    margin-left: 300px;    
+    perspective: 400px;
+    transform-style: preserve-3d;
+    position: relative;
+  
+
+}
+.mf-box .box{   
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 0.8;/*设置每个面的透明度*/
+}
+.mf-box .box1{
+    transform: rotateY(0)translateZ(50px);
+}
+.mf-box .box2{
+    transform: rotateY(-90deg)translateZ(50px);
+}
+.mf-box .box3{
+    transform: rotateX(90deg)translateZ(50px);
+}
+.mf-box .box4{
+    transform: rotateX(-90deg)translateZ(50px);
+}
+.mf-box .box5{
+    transform: rotateY(90deg)translateZ(50px);
+}
+.mf-box .box6{
+    transform: rotateY(180deg)translateZ(50px);
+}
+.mf-box{
+    animation: rotate linear 20s infinite;
+}
+@-webkit-keyframes rotate{
+    from{
+        transform: rotateX(0deg) rotateY(0deg);
+    }
+    to{
+        transform: rotateX(360deg) rotateY(360deg);
+    }
+}
+.mf-box:hover .box1{
+    transform: rotateY(0)translateZ(100px);
+}
+.mf-box:hover .box2{
+    transform: rotateY(-90deg)translateZ(100px);
+}
+.mf-box:hover .box3{
+    transform: rotateX(90deg)translateZ(100px);
+}
+.mf-box:hover .box4{
+    transform: rotateX(-90deg)translateZ(100px);
+}
+.mf-box:hover .box5{
+    transform: rotateY(90deg)translateZ(100px);
+}
+.mf-box:hover .box6{
+    transform: rotateY(180deg)translateZ(100px);
+}
