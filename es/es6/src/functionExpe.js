@@ -1,0 +1,89 @@
+/**
+ * es6 允许函数参数 为默认值  
+ * 使用参数默认值时， 函数不能有同名参数。
+ * 非尾部的参数设置默认值，实际上这个参数是无法省略的。 除非显示输入 undefined 
+ */
+
+/**
+ * ES6 引入了rest 参数（形式为...变量名，用于获取函数的多余参数，这样就不需要使用arguments 对象了。
+ * rest 参数后不能有其他的参数
+ */
+
+function sortNumber() {
+    return Array.prototype.slice.call(arguments).sort();
+}
+
+const sortNumbers = (...number) => number.sort()
+
+/**
+ * 箭头函数
+ * 函数体内的this 对象就是定义时所在的对象，而不是使用时所在的对象。
+ * 不能使用new  arguments 可以使用rest  不可以使用yied
+ * 
+ */
+
+var f = v => v
+//同下
+var f = function (v) {
+    return v
+}
+
+var sum = (numl, num2) => numl + num2;
+// 同下
+var sum = function (numl, num2) {
+    return num1 + num2
+}
+
+function Timer() {
+    this.s1 = 0;
+    this.s2 = 0;
+    setInterval(() => this.s1++, 1000); //this指向 Timer
+    setInterval(function () {
+        this.s2++;//this 指向全局
+    }, 1000)  
+}
+
+var time = new Timer()
+setTimeout(() => console.log(" s1 ：", time.s1), 3100);
+setTimeout(() => console.log("s2 :,", time.s2), 3100);
+
+
+var handler ={
+    // init this 指向handler 否则 this.dosomething 报错
+    // 箭头函数没有自己的this 所以this指向外部代码块
+    id  =  "1234",
+    init:function(){
+        document.addEventListener("click",
+        event =>this.doSomething(event.type),false);
+    },
+    doSomething:function(type){
+        console.log("handler"+type+"for"+this.id);
+    }
+}
+/**
+ * foo::bar() = bar.bind(foo) ，双冒号左边是一个对象，右边是一个函数
+ * 该运算符会自动将左边的对象作为上下文环境（即this 对象〉绑定到右边的函数上
+ * 如果双冒号左边为空，右边是一个对象的方法，则等于将该方法绑定在该对象上。
+ */
+// var method = obj::obj.foo;
+// //等同于
+// var method = ::obj.foo ;
+
+/**
+ * 尾调用是指某个函数的最后一步是调用另一个函数。
+ * 函数调用自身称为递归。如果尾调用自身就称为尾递归。
+ */ 
+//尾调用
+function f(x){
+    return g(x)
+}
+//非尾递归 容易发生栈堆满溢出
+function fib(n){
+    if(n <= 1){return 1} ;
+    return  fib(n-1)*fib(n)
+}
+//尾递归  
+function fib(n , a1 =1 , a2 =1){
+    if(n<=1) return a2
+    return fib(n-1 , a2 , a1 +a2)
+}
